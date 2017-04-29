@@ -1,0 +1,27 @@
+
+
+<iframe id='flight3d' src="https://www.flightradar24.com/IGO3473/d391b81/3d" style="height: 100vh; width: 100vw"></iframe>
+<div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
+<div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
+<div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
+<div style="background: white; width: 100vw; height: 12vh; position: fixed; bottom: 0px; left: 0px"></div>
+
+<div ></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+      function change(i, j)
+      {
+            $('#flight3d').attr('src', 'https://www.flightradar24.com/'+j+'/'+i+'/3d');
+      }
+</script>
+
+<script>
+      $.get('https://data-live.flightradar24.com/zones/fcgi/feed.js', function (data) {
+            for (var i in data) {
+                  if (i!='full_count' && i!='version') 
+                        {$('#flights').append('<font onclick="change(\''+i+'\',\''+data[i][16]+'\')">'+i+'</font>&emsp;')}
+            }
+      })
+</script>
