@@ -1,0 +1,15 @@
+<ion-pullup class="fc-pullup">
+    <ion-pullup-handle width="100" height="20">
+        <i class="icon ion-drag"></i>
+    </ion-pullup-handle>
+    <ion-pullup-body>
+        <ion-header-bar align-title="center" pullup-header class="fc-pullup-bar-title">
+            <button ng-show="isBackButton()" class="button button-light button-clear button-icon ion-ios-arrow-back fc-pullup-bar-title" ng-click="backToFieldLists()"></button>
+            <div class="title fc-pullup-bar-title">{{getTitle()}}</div>
+        </ion-header-bar>
+        <ion-content pullup-content delegate-handle="pullupscrollhandle" id="pullupContent" class="fc-pullup-bar-alignment">
+            <div ng-if="showContent()" ng-include="getUrl()"></div>
+            <ion-infinite-scroll ng-if="isScrollMore()" icon="ion-loading-c" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+        </ion-content>
+    </ion-pullup-body>
+</ion-pullup>

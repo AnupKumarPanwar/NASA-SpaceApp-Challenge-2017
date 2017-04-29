@@ -1,0 +1,25 @@
+<ion-popover-view>
+    <ion-content overflow-scroll="true">
+	    <div class="row">
+	    	<div class="col col-50 text-left" ng-repeat="item in getTileNames()"  ng-if="$even" style="padding:0px;">
+	        	<ion-radio ng-model="model.radio" ng-value="item">
+	        		<img ng-src="{{getTileImage(item)}}" style=" width:25%; height:auto; border-radius: 4px; vertical-align:middle;">
+              {{getFullName(item)}}
+	        	</ion-radio>
+	        </div>
+	    </div>
+      <div class="row">
+        <div class="col col-50 text-left" ng-repeat="item in getTileNames()"  ng-if="$odd" style="padding:0px;">
+            <ion-radio ng-model="model.radio" ng-value="item">
+              <img ng-src="{{getTileImage(item)}}" style=" width:25%; height:auto; border-radius: 4px; vertical-align:middle;">
+              {{getFullName(item)}}
+            </ion-radio>
+          </div>
+      </div>
+      <div class="col text-left" overflow-scroll="true">
+        <ion-toggle ng-repeat="item in getFeatureConfig() track by $index" toggle-class="toggle-positive" class="toggle-large" ng-hide="item.layerbox.disabled" ng-model="item.layerbox.checked" ng-click="clickToggle(item)">
+  				<img ng-hide="item.layerbox.icon===undefined" ng-click="clickToggle(item)" ng-src="{{item.layerbox.icon}}" width="25px" style="border-radius:50%; vertical-align:middle;"> {{item.fullname}}
+  			</ion-toggle>
+      </div>
+    </ion-content>
+</ion-popover-view>

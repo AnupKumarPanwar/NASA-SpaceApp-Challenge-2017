@@ -1,0 +1,13 @@
+<ion-modal-view class="fc-theme">
+	<ion-header-bar class="bar-dark">
+		<h1 class="title"></h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="stop()"><span class="icon ion-close"></span></button>
+        </div>
+    </ion-header-bar>
+    <ion-content scroll="false" class="padding">
+       <ion-scroll overflow-scroll="false" zooming="true" max-zoom="10" min-zoom="1" direction="xy" style="width: 100%; height: 100%;">
+  			<div ng-style="getStyle()"></div>
+ 		</ion-scroll>
+    </ion-content>
+</ion-modal-view>

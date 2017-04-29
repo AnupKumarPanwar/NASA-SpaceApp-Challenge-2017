@@ -1,1 +1,272 @@
-/* Empty. Add your own CSS if you like */
+hmtl, body {
+    height: 100%;
+    width: 100%;
+    padding:0px;
+    margin:0px;
+}
+#map {
+    height: 100%;
+    width: 100%;
+    padding:0px;
+    margin:0px;
+}
+a{
+    color: rgba(0, 94, 173, 1);
+    text-decoration: inherit;
+}
+.fc-logo {
+    z-index:99999;
+}
+.fc-logo img {
+    width: 150px;
+}
+.checkbox input:checked+.checkbox-icon:before, 
+.checkbox input:checked:before {
+    background: #005ead;
+    border-color: #005ead;
+}
+.checkbox input:disabled:checked+.checkbox-icon:before, 
+.checkbox input:disabled:checked:before{
+    background: #ddd;
+    border-color: #ddd;
+}
+
+.button.button-positive,
+.button.button-positive:hover{
+    background: #005ead;
+    color: white;
+    border: none;
+}
+.button.button-positive:active {
+    background: white;
+    color: #005ead;
+    border: 1px solid #005ead;
+}
+.button.button-positive.button-clear,
+.button.button-positive.button-clear:hover,
+.button.button-positive.button-clear:active{
+    border-color: transparent;
+    background: 0 0;
+    box-shadow: none;
+    color: #005ead;
+}
+
+.toggle input:checked + .track {
+  border-color: #005ead !important;
+  background-color: #005ead !important;
+}
+.toggle-small .toggle-positive input:checked+.track .handle {
+    background-color: white;
+}
+.col-60px {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 60px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 60px;
+    -ms-flex: 0 0 60px;
+    flex: 0 0 60px;
+    max-width: 60px; 
+}
+.col-70px {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 70px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 70px;
+    -ms-flex: 0 0 70px;
+    flex: 0 0 70px;
+    max-width: 70px; 
+}
+.col-80px {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 80px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 80px;
+    -ms-flex: 0 0 80px;
+    flex: 0 0 80px;
+    max-width: 80px; 
+}
+.col-100px {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 100px;
+    -ms-flex: 0 0 100px;
+    flex: 0 0 100px;
+    max-width: 100px; 
+}
+.col-120px {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 120px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 120px;
+    -ms-flex: 0 0 120px;
+    flex: 0 0 120px;
+    max-width: 120px; 
+}
+.ol-control button, 
+.ol-control button:hover, 
+.ol-control button:focus,
+.ol-control button:active,
+ {
+    display: block;
+    text-decoration:none;
+    border: none;
+    z-index: 10000;
+    background-color: rgba(255, 255, 255, 0);
+}
+.fcol-attribution,
+.fcol-attribution:hover,
+.fcol-attribution:focus,
+.fcol-attribution:active{
+    padding:0px;
+    margin: 5px;
+    position: relative;
+    background: rgba(0,0,0,0);
+}
+
+.fcol-attribution button,
+.fcol-attribution button:hover,
+.fcol-attribution button:focus,
+.fcol-attribution button:active{
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.8);
+    color: #005ead;
+    padding:0px;
+    background: white;
+    height: 1.8em;
+    width: 1.8em;
+}
+.fcol-attribution ul{
+    position: fixed;
+    bottom: 10px;
+    left: 20%;
+    width: 60%;
+    padding:0px;
+    color: white;
+    float: left;
+    font-size: 10px;
+    line-height: 14px;
+}
+.fcol-attribution ul li img{
+    width: 15px;
+}
+.fcol-attribution.ol-collapsed ul{
+    padding:0px;
+    display: none;
+}
+
+.ol-zoom, 
+.ol-zoom:hover,
+.ol-zoom:focus,
+.ol-zoom:active
+ {
+    top: 110px;
+    left: 5px;
+    padding:0;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0);
+}
+.ol-zoom .ol-zoom-in,
+.ol-zoom .ol-zoom-in:hover,
+.ol-zoom .ol-zoom-in:focus,
+.ol-zoom .ol-zoom-in:active
+{
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.8);
+    height: 1.8em;
+    width: 1.8em;
+    color: rgba(0, 94, 173, 1);
+    background-color: #fff;
+    border-radius: 2px;
+}
+.ol-zoom .ol-zoom-out,
+.ol-zoom .ol-zoom-out:hover,
+.ol-zoom .ol-zoom-out:focus,
+.ol-zoom .ol-zoom-out:active 
+{
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.8);
+    height: 1.8em;
+    width: 1.8em;
+    color: rgba(0, 94, 173, 1);
+    background-color: #fff;
+    border-radius: 2px;
+}
+.fcol-rotate,
+.fcol-rotate:hover,
+.fcol-rotate:focus {
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+}
+.fcol-rotate button,
+.fcol-rotate button:hover,
+.fcol-rotate button:focus {
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 15px;
+}
+.fcol-scale-line,
+.fcol-scale-line:hover,
+.fcol-scale-line:focus,
+.fcol-scale-line:active {
+    padding: 2px;
+    position: relative;
+    background: rgba(255, 255, 255, 0);
+}
+.fcol-scale-line-inner,
+.fcol-scale-line-inner:hover,
+.fcol-scale-line-inner:focus,
+.fcol-scale-line-inner:active {
+    border: 1px solid white;
+    border-top: none;
+    color: white;
+    font-size: 13px;
+    height: 16px;
+    text-align: center;
+}
+
+.divider{
+    border-top: 1px solid white;
+    margin: 0px 18px 0px 18px;
+}
+.bar.bar-calm {
+    background-color: rgba(0, 94, 173, 1);
+    color: #fff;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+    0% {box-shadow: 0px 0px 3px #005ead;}
+    50% {box-shadow: 0px 0px 3px white;}
+    100% {box-shadow: 0px 0px 3px #005ead;}
+}
+
+/* Standard syntax */
+@keyframes progress-bar-stripes {
+    0% {box-shadow: 0px 0px 3px #005ead;}
+    50% {box-shadow: 0px 0px 3px white;}
+    100% {box-shadow: 0px 0px 3px #005ead;}
+}
+
+progress{
+    background: #f5f5f5;
+    width: 100%;
+    padding: 1px;
+    height: 18px;
+    border-radius: 4px;
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite; 
+}
+progress::-webkit-progress-bar {
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+progress::-webkit-progress-value {
+    background: #005ead;
+    border-radius: 4px;
+}
+
+
+.modal-open {
+    pointer-events: inherit;
+}

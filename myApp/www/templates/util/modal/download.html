@@ -1,0 +1,62 @@
+<ion-modal-view class="fc-theme">
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Download</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="cancel()"><span class="icon ion-close"></span></button>
+        </div>
+    </ion-header-bar>
+    <div class="bar bar-subheader" style="box-shadow: 0px 1px 2px #888888;">
+        <div class="title">
+            <label class="item item-input">
+                <input type="text" placeholder="Enter map name" ng-model="databox.name" required>
+            </label>
+        </div>
+    </div>
+    <ion-content class="padding fc-theme" overflow-scroll="false" style="margin-top:35px; margin-bottom:50px;">
+        <form novalidate>
+            <div class="list">
+                <ul class="list list-inset">
+                    <li class="item">
+                        Choose your base maps:
+                    </li>
+                    <li class="item fc-checklist-box">
+                        <div class="list">
+                            <div class="row text-center">
+                                <div class="col text-center" ng-repeat="item in tilebox.getTileNames()">
+                                  <div>
+                                    <button type="checkbox" class="fc-download-tile" ng-model="tilebox.checkbox[item]" ng-click="tilebox.checkbox[item]=!tilebox.checkbox[item]">
+                                      <div>
+                                        <img ng-class="tilebox.getImgClass(tilebox.checkbox[item])" ng-src="{{tilebox.imagebox[item]}}">
+                                      </div>
+                                    </button>
+                                    <div ng-class="tilebox.getTextClass(tilebox.checkbox[item])">
+                                        {{tilebox.getFullName(item)}}
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-text-wrap">
+                          Estimated storage space required: {{ tilebox.getTileSize() }} MB
+                        </div>
+                    </li>
+                    <li class="item item-checkbox" ng-hide="featurebox.disabled[item]" ng-repeat="item in featurebox.getFeatureNames()">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="featurebox.checkbox[item]">
+                        </label>
+                        <div class="item-text-wrap">{{featurebox.title[item]}}</div>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </ion-content>
+
+    <div class="bar bar-footer" style="min-height:50px;height:auto;padding:0px;margin:0px;border:none;border-radius: 4px 4px 0px 0px;  background-color:#c5c5c5;">
+        <button style="padding:0px;margin:0px; box-shadow: 0px -1px 2px #888888; border-radius: 4px 4px 0px 0px;" class="button button-block button-positive" ng-hide="progressBar.visible" ng-click="save()">Save</button>
+        <div class="col col-100" ng-show="progressBar.visible">
+            <div class="text-center">Do not exit this page during saving</div>
+            <div class="text-center item-text-wrap">{{progressBar.getText()}}</div>
+            <progress max="{{progressBar.maxvalue}}" value="{{progressBar.value}}"></progress>
+        </div>
+    </div>
+</ion-modal-view>

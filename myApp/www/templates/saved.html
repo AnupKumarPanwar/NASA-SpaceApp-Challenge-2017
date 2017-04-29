@@ -1,0 +1,26 @@
+<ion-view view-title="Saved" hide-back-button="true" class="fc-theme">
+ 	<ion-nav-buttons side="right">
+	    <button class="button button-positive" ng-click="deleteAll()">
+	        Delete all
+	    </button>
+	</ion-nav-buttons>
+	<ion-content>
+    <div class="card" ng-cloak ng-show="isInfolistEmpty()" >
+      	<div class="item item-text-wrap text-center"><strong>Nothing saved yet!</strong>
+        	<p>Tap as many points on the map as you like, press the "Load path" button, then press "Save for offline"</p>
+      	</div>
+  	</div>
+		<ion-list can-swipe="true">
+		  	<ion-item click-options item="item" ng-repeat="item in infoList" class="item-avatar">
+			    <ion-option-button class="button-positive" ng-click="load(item)">
+	            	Load
+	          	</ion-option-button>
+			  	<ion-option-button class="button-assertive" ng-click="delete(item, $index)">
+			      	Delete
+			    </ion-option-button>
+				<img src="img/maptile.jpg">
+				<h2>{{item.name}}</h2>
+		  	</ion-item>
+		</ion-list>
+	 </ion-content>
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view view-title="" hide-back-button="true">
+	<ion-nav-buttons side="left" ng-show="false">
+	 <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+ 	</ion-nav-buttons>
+
+	<ion-nav-buttons side="right" ng-show="false">
+		<!-- Load -->
+		<fc-button class="fc-barbutton" no-state state-triggered state="1" name="yes" text="Load path"></fc-button>
+		<!-- download -->
+		<fc-button class="fc-barbutton" no-state state-triggered state="2" name="download" text="Save for offline"></fc-button>
+    </ion-nav-buttons>
+		<!-- <div ng-controller="TutorialCtrl" class="tut-image tut1"></div> -->
+	<ion-pane class="fc-theme">
+		<div id="map" data-tap-disabled="true"></div>
+		<div class="fc-map fc-topleft">
+			<div class="fc-box">
+				<div class="row">
+					<div style="font-size: 10px;">N</div>
+					<div style="margin-left: -2px;" id="control-rotate"></div>
+					<div id="control-scale"></div>
+				</div>
+			</div>
+		</div>
+		<div class="fc-map fc-topright">
+			<!-- layer -->
+			<fc-button class="fc-button" no-state icon="icon ion-map" classes="" name="layer" ng-click="getScopes().start($event)"></fc-button>
+			<!-- clear -->
+			<fc-button class="fc-button" no-state icon="icon ion-android-close" classes="" name="clear"></fc-button>
+		</div>
+		<div class="fc-map fc-topright-far">
+			<fc-box class="fc-box" button-gps-triggered buttonname="info" type="info" height="auto" width="auto"></fc-box>
+		</div>
+		<div class="fc-map fc-bottomright">
+			<!-- info -->
+			<fc-button class="fc-button" has-state gps-triggered icon="icon ion-speedometer" classes="" name="info"></fc-button>
+			<!-- center -->
+			<fc-button class="fc-button" no-state gps-triggered icon="icon ion-pinpoint" classes="" name="center"></fc-button>
+			<!-- navigation -->
+			<fc-button class="fc-button" has-state gps-triggered icon="icon ion-android-navigate" classes="" name="navigation"></fc-button>
+		</div>
+		<div class="fc-map fc-bottomleft">
+			<div id="control-attribution"></div>
+		</div>
+
+		<popup></popup>
+	</ion-pane>
+</ion-view>

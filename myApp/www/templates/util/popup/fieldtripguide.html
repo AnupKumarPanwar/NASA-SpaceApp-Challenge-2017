@@ -1,0 +1,68 @@
+<ion-list class="fc-popup-list">
+    <ion-item>
+        <div class="row">
+            <div class="col item-text-wrap fc-selectable">
+                <div class="title"><strong>{{getContent().title}}</strong></div>
+                <p></p>
+                <div ng-hide="!getContent().abstr"><strong>Abstract: </strong><span>{{getContent().abstr}}</span><br></div>
+                <div><strong>Authors: </strong><span>{{getContent().authors}}</span><br></div>
+                <div><strong>Publisher: </strong><span>{{getContent().publisher}}</span><br></div>
+                <div><strong>Year: </strong><span>{{getContent().yearPublished}}</span></div>
+            </div>
+        </div>
+    </ion-item>
+    <ion-item ng-if="getContent().sections&&getContent().sections.length">
+        <div class="card fc-pullup-card" ng-repeat="section in getContent().sections| orderBy:'displayOrder'">
+            <div class="col item-text-wrap fc-selectable" ng-click="setCollapsed(section)">
+                <strong>
+                    <i ng-hide="getCollapsed(section)" class="icon ion-chevron-right"></i><i ng-show="getCollapsed(section)" class="icon ion-chevron-down"></i>  {{section.title}}
+                </strong>
+
+                <div ng-show="getCollapsed(section)">
+                  <br>
+                    <div><div class="text-padding" ng-bind-html="section.text"></div><br></div>
+                    <div ng-repeat="sectionfigureID in section.figures track by $index">
+                        <div class="imagebox" ng-if="getFigureByID(sectionfigureID)">
+                            <img class="pullup-image" ng-src="{{getFigureByID(sectionfigureID).base64}}" ng-click="imgClicked(getFigureByID(sectionfigureID).base64)"/>
+                            <br>
+                            <div class="pullup-caption">
+                                <span>{{getFigureByID(sectionfigureID).caption}}</span>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-item>
+    <ion-item ng-if="getContent().stops&&getContent().stops.length">
+        <div class="card fc-pullup-card" ng-repeat="stop in getContent().stops| orderBy:'displayOrder'" id="stop-{{stop.id}}">
+            <div class="item-text-wrap fc-selectable">
+                <div class="row">
+                    <div class="col col-90" ng-click="setCollapsed(stop)">
+                        <strong><i ng-hide="getCollapsed(stop)" class="icon ion-chevron-right"></i><i ng-show="getCollapsed(stop)" class="icon ion-chevron-down"></i>
+                        {{stop.title}}</strong>
+                    </div>
+                    <div class="col">
+                        <button class="button button-outline button-light button-clear button-small" style="color:#005ead; border:1px solid #005ead;" ng-click="findOnMap(stop)">
+                            <i class="icon ion-ios-location"></i>
+                        </button>
+                    </div>
+                </div>
+                <div ng-show="getCollapsed(stop)">
+                    <div class="text-padding" ng-bind-html="stop.text"></div><br>
+                </div>
+                <div ng-repeat="figureID in stop.figures track by $index" ng-show="getCollapsed(stop)">
+                    <div class="imagebox" ng-if="getFigureByID(figureID)">
+                        <img class="pullup-image" ng-src="{{getFigureByID(figureID).base64}}" ng-click="imgClicked(getFigureByID(figureID).base64)"/>
+                        <br>
+                        <div class="pullup-caption">
+                            <span>{{getFigureByID(figureID).caption}}</span>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </ion-item>
+</ion-list>

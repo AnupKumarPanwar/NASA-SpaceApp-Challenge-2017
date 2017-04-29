@@ -1,0 +1,4 @@
+<ion-radio ng-repeat="item in getTileNames()" ng-model="model.radio" ng-value="item">{{getFullName(item)}}</ion-radio>
+<ion-toggle ng-repeat="item in getFeatureConfig()" toggle-class="toggle-positive" class="toggle-small" ng-hide="item.layerbox.disabled" ng-model="item.layerbox.checked" ng-click="clickToggle(item)">
+<img ng-hide="item.layerbox.icon===undefined" ng-src="{{item.layerbox.icon}}" width="20px"> {{item.fullname}}
+</ion-toggle>

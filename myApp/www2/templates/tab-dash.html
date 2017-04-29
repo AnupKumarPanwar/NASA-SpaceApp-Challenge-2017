@@ -1,0 +1,104 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <!-- <h2>Welcome to Ionic</h2>
+    <p>
+    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
+    </p>
+    <p>
+      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
+    </p>
+    <p>
+    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
+    </p>
+    <p>
+      <b>Psst!</b> - Try <a href="http://view.ionic.io/">Ionic View</a> to easily share and test your app with clients and co-workers.
+    </p> -->
+
+
+
+
+
+    <iframe id='flight3d' src="https://www.flightradar24.com/CPA695/d392b69/3d" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
+    
+    <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
+          <input type="text" name="flightNo" id="flightNo" class="form-control">
+          <button type="button" class="btn btn-success" onclick="process(); move();">Search</button>
+    </div>
+
+  
+    <style>
+    #myProgress {
+      width: 100%;
+      background-color: #ddd;
+      position: fixed;
+      z-index: 1000;
+      left: 0px;
+      bottom: 0px;
+      width: 100vw;
+      display: none;
+    }
+
+    #myBar {
+      width: 1%;
+      height: 30px;
+      background-color: #4CAF50;
+    }
+    </style>
+    <body>
+
+    <!-- <h1>JavaScript Progress Bar</h1> -->
+
+    <div id="myProgress">
+      <div id="myBar"></div>
+    </div>
+
+    <!-- <br> -->
+    <!-- <button id="myP" onclick="move()">Click Me</button>  -->
+
+    <script>
+    function move() {
+
+      var elem = document.getElementById("myBar");   
+      var width = 1;
+      var id = setInterval(frame, 30);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          $('#myProgress').hide();
+        } else {
+          width++; 
+          elem.style.width = width + '%'; 
+          $('#myProgress').show();
+        }
+      }
+    }
+    </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+          var allFilghts;
+          function change(i, j)
+          {
+                // move();
+                $('#flight3d').attr('src', 'https://www.flightradar24.com/'+j+'/'+i+'/3d');
+                      // document.getElementById("prograssPercent").style.width = x+"vw";
+                // }
+          }
+
+          function process()
+          {
+                var no=$('#flightNo').val();
+                $.get('http://192.172.6.179:8080/'+no, function(data)
+                {
+                       $('#flight3d').attr('src', data);
+                })
+                
+          }
+    </script>
+
+
+  </ion-content>
+</ion-view>

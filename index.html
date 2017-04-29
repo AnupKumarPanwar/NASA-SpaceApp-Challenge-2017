@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
-<iframe id='flight3d' src="https://www.flightradar24.com/FDX1468/d38fd53/3d" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
+<iframe id='flight3d' src="https://www.flightradar24.com/IGO556/d3a187d/3d" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
 <!-- <div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
 <div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
 <div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
@@ -10,6 +10,8 @@
       <input type="text" name="flightNo" id="flightNo">
       <button onclick="process();">Submit</button>
 </div> -->
+
+<b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 10vh; left: 40vw;"></b>
 
 <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
       <input type="text" name="flightNo" id="flightNo" class="form-control">
@@ -21,7 +23,7 @@
 </div> -->
 
 <style>
-#myProgress, #myP {
+#myProgress {
   width: 100%;
   background-color: #ddd;
   position: fixed;
@@ -29,6 +31,7 @@
   left: 0px;
   bottom: 0px;
   width: 100vw;
+  display: none;
 }
 
 #myBar {
@@ -88,27 +91,50 @@ function move() {
             {
                    $('#flight3d').attr('src', data);
             })
-            // for (i in allFilghts)
-            // {
-            //       console.log(i);
-            //       console.log(allFilghts[i][13]);
-            //       if (i!='full_count' && i!='version' && allFilghts[i][13]==no) 
-            //       {
-            //             change(i, allFilghts[i][16]);
 
-            //       }
-            // }
       }
 </script>
 
 <script>
-      // $.get('https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=71.60,-76.63,-152.55,106.52&faa=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=7200&gliders=1&stats=1&selected=d395490&ems=1&enc=XZ0mxLiJzQ7p8PTURjqQGuL-tDxNe8DlDwQdlWhbT-A', function (data) {
-      //      allFilghts=data; 
-      //      alert('done');
-      //      // full_count
-      //       // for (var i in data) {
-      //       //       if (i!='full_count' && i!='version') 
-      //       //             {$('#flights').append('<font onclick="change(\''+i+'\',\''+data[i][16]+'\')">'+i+'</font>&emsp;')}
-      //       // }
-      // })
+     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        console.log(pos);
+
+
+
+        var geocoder = new google.maps.Geocoder;
+
+          var latlng = {lat: parseFloat(pos.lat), lng: parseFloat(pos.lng)};
+          geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === 'OK') {
+              if (results[1]) {
+                // infowindow.setContent(results[1].formatted_address);
+                // alert(results[1].formatted_address);
+                $('#currentLoc').text(results[1].formatted_address);
+
+              } else {
+                window.alert('No results found');
+              }
+            } else {
+              window.alert('Geocoder failed due to: ' + status);
+            }
+          });
+
+
+
+
+
+
+      }, function() {
+        // handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } 
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ6DdP4kmkwpGoyRF2MSXyU7KRe9CVTXk&callback=initMap">
 </script>

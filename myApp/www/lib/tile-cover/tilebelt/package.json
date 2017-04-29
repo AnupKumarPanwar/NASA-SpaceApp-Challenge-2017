@@ -1,0 +1,137 @@
+{
+  "name": "tilebelt",
+  "version": "0.7.1",
+  "description": "simple tile utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/tilebelt.git"
+  },
+  "keywords": [
+    "tile",
+    "map",
+    "geojson"
+  ],
+  "author": {
+    "name": "morganherlocker"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapbox/tilebelt/issues"
+  },
+  "homepage": "https://github.com/mapbox/tilebelt",
+  "devDependencies": {
+    "tape": "^2.14.0",
+    "benchmark": "~1.0.0"
+  },
+  "dependencies": {},
+  "gitHead": "fcbaf6ffedb618c4d95b39db79ce3e31898b8327",
+  "_id": "tilebelt@0.7.1",
+  "_shasum": "d9f418dbad9ca483b4425dd0f86b9065716fd679",
+  "_from": "tilebelt@>=0.7.1 <0.8.0",
+  "_npmVersion": "1.4.23",
+  "_npmUser": {
+    "name": "morganherlocker",
+    "email": "morgan.herlocker@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "morganherlocker",
+      "email": "morgan.herlocker@gmail.com"
+    },
+    {
+      "name": "ajashton",
+      "email": "aj.ashton@gmail.com"
+    },
+    {
+      "name": "lxbarth",
+      "email": "alex@developmentseed.org"
+    },
+    {
+      "name": "mikemorris",
+      "email": "michael.patrick.morris@gmail.com"
+    },
+    {
+      "name": "ianshward",
+      "email": "ian@mapbox.com"
+    },
+    {
+      "name": "mourner",
+      "email": "agafonkin@gmail.com"
+    },
+    {
+      "name": "tristen",
+      "email": "tristen.brown@gmail.com"
+    },
+    {
+      "name": "ingalls",
+      "email": "nicholas.ingalls@gmail.com"
+    },
+    {
+      "name": "ansis",
+      "email": "ansis.brammanis@gmail.com"
+    },
+    {
+      "name": "jfirebaugh",
+      "email": "john.firebaugh@gmail.com"
+    },
+    {
+      "name": "miccolis",
+      "email": "jeff@miccolis.net"
+    },
+    {
+      "name": "gretacb",
+      "email": "carol@mapbox.com"
+    },
+    {
+      "name": "aaronlidman",
+      "email": "aaronlidman@gmail.com"
+    },
+    {
+      "name": "camilleanne",
+      "email": "camille@mapbox.com"
+    },
+    {
+      "name": "rclark",
+      "email": "ryan.clark.j@gmail.com"
+    },
+    {
+      "name": "mapbox",
+      "email": "accounts@mapbox.com"
+    },
+    {
+      "name": "willwhite",
+      "email": "will@mapbox.com"
+    },
+    {
+      "name": "springmeyer",
+      "email": "dane@mapbox.com"
+    },
+    {
+      "name": "kkaefer",
+      "email": "kkaefer@gmail.com"
+    },
+    {
+      "name": "dthompson",
+      "email": "dthompson@gmail.com"
+    },
+    {
+      "name": "yhahn",
+      "email": "young@developmentseed.org"
+    },
+    {
+      "name": "tmcw",
+      "email": "tom@macwright.org"
+    }
+  ],
+  "dist": {
+    "shasum": "d9f418dbad9ca483b4425dd0f86b9065716fd679",
+    "tarball": "http://registry.npmjs.org/tilebelt/-/tilebelt-0.7.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/tilebelt/-/tilebelt-0.7.1.tgz",
+  "readme": "ERROR: No README data found!"
+}

@@ -1,0 +1,49 @@
+<ion-modal-view class="fc-theme">
+	<ion-header-bar class="bar-dark">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="stop()"><span class="icon ion-ios-arrow-back"></span></button>
+        </div>
+        <h1 class="title">Field trips</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+	  	</ion-refresher>
+    	<div class="card" ng-if="isContentEmpty()" >
+      		<div class="item item-text-wrap text-center"><strong>Field trip list unavailable</strong>
+        		<p>Please check your internet connection.  If you've saved a field trip for offline use you can find it in the saved menu.</p>
+      		</div>
+  		</div>
+       <ion-list ng-if="!isContentEmpty()">
+            <ion-item class="item-divider" ng-if="getContentInPath().length>0">Guides in Path&nbsp; <img src="img/stop.png" height="15" width="15"></ion-item>
+
+		  	<ion-item item="item" ng-repeat="item in getContentInPath()" ng-click="fieldTripMore(item)" class="field-trip-item">
+		  		<div class="row">
+		  			<div class="col col-10 field-center">
+						<div class="image-wrap">
+		  				<img src="img/stop.png" height="24" width="24">
+						</div>
+		  			</div>
+		  			<div class="col col-80">
+		          		<div class="item-text-wrap fc-selectable" href="#">
+					    	<div ng-if="!isEmpty(item.title)">{{item.title}}</div>
+					  	</div>
+					</div>
+					<div class="col col-10 field-center">
+		                <i class="icon ion-chevron-right icon-accessory"></i>
+		            </div>
+		  		</div>
+		  	</ion-item>
+            <ion-item class="item-divider" ng-if="getContentNotInPath().length>0">Guides not in Path</ion-item>
+		  	<ion-item item="item" ng-repeat="item in getContentNotInPath()" ng-click="fieldTripMore(item)">
+		  		<div class="row">
+		  			<div class="col col-90 item-text-wrap fc-selectable">
+						<div ng-if="!isEmpty(item.title)">{{item.title}}</div>
+					</div>
+					<div class="col col-10 field-center">
+		                <i class="icon ion-chevron-right icon-accessory"></i>
+		            </div>
+		  		</div>
+		  	</ion-item>
+		</ion-list>
+    </ion-content>
+</ion-modal-view>

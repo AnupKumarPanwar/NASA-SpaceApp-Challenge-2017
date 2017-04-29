@@ -1,0 +1,77 @@
+<ion-view view-title="{{getCurrentTitle()}}" class="fc-theme">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="item in getCurrentContent()">
+                <div ng-if="!hasLink(item.wiki)">
+                    <div class="row" ng-repeat="row in item.imageRows">
+                        <div class="col" ng-class="getImageClass(row)" ng-repeat="img in row">
+                            <img width="100%" height="auto" ng-src="{{img.img}}"><br>
+                            <div style="white-space: normal;font-size: x-small;line-height: 10px;">
+                                <span>{{img.caption}}</span>
+                                <span>(Image Credit: {{img.credit}})</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-click="setCollapsed(item)">
+                        <div class="col">
+                            <div class="row item-text-wrap">
+                                <div class="col">
+                                    <b>{{item.title}}</b>
+                                </div>
+                            </div>
+                            <div class="row item-text-wrap">
+                                <div class="col">
+                                    <p>{{item.primaryText}}</p>
+                                </div>
+                                <div style="display:flex;align-items: center;">
+                                    <i ng-hide="getCollapsed(item)" class="icon ion-chevron-down"></i><i ng-show="getCollapsed(item)" class="icon ion-chevron-up"></i>
+                                </div>
+                            </div>
+                            <div class="row item-text-wrap" ng-show="getCollapsed(item)">
+                                <div class="col">
+                                    <p>{{item.secondaryText}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="hasLink(item.wiki)">
+                    <div class="row" ng-repeat="row in item.imageRows">
+                        <div class="col col-33" ng-repeat="img in row">
+                            <img width="100%" height="auto" ng-src="{{img.img}}"><br>
+                            <div style="overflow-wrap:normal;white-space: normal;font-size: x-small;line-height: 10px;">
+                                <span>{{img.caption}}</span>
+                                <span>(Image Credit: {{img.credit}})</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-click="setCollapsed(item)">
+                        <div class="col">
+                            <a href="#" ng-click="toUrl(item.wiki)" style="color:black;">
+                                <div class="row item-text-wrap">
+                                    <div class="col">
+                                        <b>{{item.title}}</b>
+                                    </div>
+                                </div>
+                                <div class="row item-text-wrap">
+                                    <div class="col">
+                                        <p>{{item.primaryText}}</p>
+                                    </div>
+                                    <div style="display:flex;align-items:center;">
+                                        <i ng-hide="getCollapsed(item)" class="icon ion-chevron-down"></i><i ng-show="getCollapsed(item)" class="icon ion-chevron-up"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="row item-text-wrap" ng-show="getCollapsed(item)">
+                                <div class="col">
+                                    <p>{{item.secondaryText}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

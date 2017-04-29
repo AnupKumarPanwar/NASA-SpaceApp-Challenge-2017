@@ -1,0 +1,17 @@
+<ion-list class="fc-popup-list">
+	<div ng-repeat="item in getContent()" ng-show="show($index)">
+		<div class="item item-text-wrap">
+		  	<div class="row">
+			  	<div class="col item-text-wrap fc-selectable">
+					<div ng-if="!isEmpty(item.lake)" class="title"><strong>{{item.lake}}</strong><br></div>
+					<div ng-if="!isEmpty(item.coreLength)"><strong>Core length: </strong><span>{{item.coreLength}} cm</span><br></div>
+					<div ng-if="!isEmpty(item.waterDepth)"><strong>Water depth: </strong><span>{{item.waterDepth}} m</span><br></div>
+					<div ng-if="!isEmpty(item.pi)"><strong>Principal investigator: </strong><span>{{item.pi}}</span><br></div>
+					<div ng-if="!isEmpty(item.cruise)"><strong>Expedition name: </strong><span>{{item.cruise}}</span><br></div>
+					<div ng-if="!isEmpty(item.begin_date)"><strong>Year: </strong><span>{{item.begin_date.substring(0, 4)}}</span></div>
+				</div>
+			</div>
+		</div>
+		<div class="divider"></div>
+	</div>
+</ion-list>

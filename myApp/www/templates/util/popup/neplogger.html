@@ -1,0 +1,19 @@
+<ion-list class="fc-popup-list">
+  	<ion-item item="item">
+  		<div class="row">
+			<div class="col item-text-wrap fc-selectable">
+                <span>coordinates(lng,lat): ( {{getContent().longitude}}, {{getContent().latitude}} )</span><br>
+                <div ng-if="getContent().provider"><span>provider: {{getContent().provider}}</span><br></div>
+                <div ng-if="getContent().satellites"><span>satellites: {{getContent().satellites}}</span><br></div>
+                <div ng-if="getContent().speed"><span>speed: {{getContent().speed}}</span><br></div>
+				<div ng-if="getContent().accuracy"><span>accuracy: {{getContent().accuracy}}</span><br></div>
+                <div ng-if="getContent().bearing"><span>bearing: {{getContent().bearing}}</span><br></div>
+                <!--<div ng-if="getContent().dateCreated"><span>date created: {{getContent().dateCreated}}</span><br></div>-->
+                <div ng-if="getContent().elevation"><span>elevation: {{getContent().elevation}}</span><br></div>
+                <!--<div ng-if="getContent().lastUpdated"><span>last updated: {{getContent().lastUpdated}}</span><br></div>-->
+                <div ng-if="getContent().text"><span>text: {{getContent().text.replace('gpslogger: ','')}}</span><br></div>
+                <div ng-if="getContent().utcDateTime"><span>utc date time: {{getContent().utcDateTime}}</span><br></div>
+			</div>
+  		</div>
+  	</ion-item>
+</ion-list>

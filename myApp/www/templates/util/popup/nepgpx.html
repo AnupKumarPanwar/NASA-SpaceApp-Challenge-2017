@@ -1,0 +1,15 @@
+<ion-list class="fc-popup-list">
+  	<ion-item item="item">
+  		<div class="row">
+			<div class="col item-text-wrap fc-selectable">
+                <span>coordinates(lng,lat): ( {{getContent().longitude}}, {{getContent().latitude}} )</span><br>
+                <!--<div ng-if="getContent().dateCreated"><span>date created: {{getContent().dateCreated}}</span><br></div>-->
+                <div ng-if="getContent().elevation"><span>elevation: {{getContent().elevation}} (m)</span><br></div>
+                <!--<div ng-if="getContent().fix"><span>fix: {{getContent().fix}}</span><br></div>-->
+                <!--<div ng-if="getContent().lastUpdated"><span>last updated: {{getContent().lastUpdated}}</span><br></div>-->
+                <div ng-if="getContent().text"><span>text: {{getContent().text}}</span><br></div>
+                <div ng-if="getContent().utcDateTime"><span>utc date time: {{getContent().utcDateTime}}</span><br></div>
+			</div>
+  		</div>
+  	</ion-item>
+</ion-list>

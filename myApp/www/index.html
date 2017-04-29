@@ -1,52 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta name = "format-detection" content = "telephone=no">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; img-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
 
-    <link rel="manifest" href="manifest.json">
+    <title>Flyover Country</title>
+    <link rel="stylesheet" href="lib/ionic/css/ionic.min.css">
+    <link rel="stylesheet" href="lib/v3.17.1-dist/ol.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fcstyle.css">
+</head>
 
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
+<body ng-app="flyover">
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+    <ion-nav-view>
+</ion-nav-view>
 
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+    <!-- GULP -->
+    <!-- <script src="js/combined-min.js"></script>
+    <script src="js/combineddep-min.js"></script> -->
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-  </head>
-  <body ng-app="starter">
-    <!--
-      The nav bar that will be updated as we navigate between views.
-    -->
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
-    <!--
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
-    <ion-nav-view></ion-nav-view>
-  </body>
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+
+    <!-- ol/db js -->
+    <script src="lib/v3.17.1-dist/ol.js"></script>
+    <script src="js/fc.js"></script>
+
+    <!-- controllers -->
+    <script src="js/controller/menu.js"></script>
+    <script src="js/controller/about.js"></script>
+    <script src="js/controller/map.js"></script>
+    <script src="js/controller/saved.js"></script>
+    <script src="js/controller/wiki.js"></script>
+    <script src="js/controller/wthContent.js"></script>
+    <script src="js/controller/cloudLand.js"></script>
+    <script src="js/controller/clouds.js"></script>
+    <script src="js/controller/cloudsContent.js"></script>
+    <script src="js/controller/wth.js"></script>
+    <script src="js/controller/faq.js"></script>
+    <script src="js/controller/instruction.js"></script>
+
+    <!-- filters -->
+    <script src="js/filter/dataFormaters.js"></script>
+    <script src="js/filter/imageFilters.js"></script>
+    <script src="js/filter/htmlFilters.js"></script>
+
+    <!-- services -->
+    <script src="js/service/modal.js"></script>
+    <script src="js/service/db.js"></script>
+    <script src="js/service/request.js"></script>
+    <script src="js/service/data.js"></script>
+    <script src="js/service/ionicUtil.js"></script>
+    <script src="js/service/tile.js"></script>
+    <script src="js/service/state.js"></script>
+    <script src="js/service/ol.js"></script>
+    <script src="js/service/message.js"></script>
+    <script src="js/service/config.js"></script>
+    <script src="js/service/util.js"></script>
+    <script src="js/service/popover.js"></script>
+    <script src="js/service/gps.js"></script>
+
+    <!-- directives -->
+    <script src="js/directive/buttons.js"></script>
+    <script src="js/directive/boxes.js"></script>
+    <script src="js/directive/popups.js"></script>
+    <script src="js/directive/clickoption.js"></script>
+
+    <!-- extras -->
+    <script src="lib/tile-cover/tilebelt/index.js"></script>
+    <script src="lib/tile-cover/index.js"></script>
+    <script src="lib/turf.min.js"></script>
+    <script src="lib/arc.js"></script>
+    <script src="lib/andfx.js"></script>
+    <script src="lib/topojson.min.js"></script>
+    <script src="lib/animatedclusterlayer.js"></script>
+</body>
 </html>

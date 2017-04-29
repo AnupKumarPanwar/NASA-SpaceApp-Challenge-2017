@@ -1,0 +1,22 @@
+<ion-list class="fc-popup-list">
+  	<ion-item item="item">
+  		<div class="row">
+			<div ng-if="isTrip(true)" class="col item-text-wrap fc-selectable">
+				<strong>Rock type: </strong><span>{{getContent().name}}</span><br>
+				<div ng-if="getContent().strat_name"><strong>Informal unit name: </strong><span>{{getContent().strat_name}}</span></div>
+				<strong>Lithology: </strong><span>{{getContent().lith}}</span><br>
+				<strong>Age: </strong><span>{{formatNumber(getContent().best_age_top)}} million - {{formatNumber(getContent().best_age_bottom)}} million years before present</span><br>
+				<div ng-if="getContent().descrip"><strong>Description: </strong><span>{{getContent().descrip}}</span></div>
+				<div ng-if="getContent().comments"><strong>Comments: </strong><span>{{getContent().comments}}</span></div>
+			</div>
+			<div ng-if="isTrip(false)" class="col item-text-wrap fc-selectable">
+				<strong>Rock type: </strong><span>{{getContent().rocktype.join(', ')}}</span><br>
+				<strong>Lithology: </strong><span>{{getContent().lithology.join(', ')}}</span><br>
+				<strong>Area: </strong><span>{{getContent().area}} (km<sup>2</sup>)</span><br>
+				<strong>Age: </strong><span>{{formatNumber(getContent().b_age)}} million ({{getContent().b_int_id}}) - {{formatNumber(getContent().t_age)}} million ({{getContent().t_int_id}}) years before present</span><br>
+				<strong>Description: </strong><span>{{getContent().unitdesc}}</span><br>
+			</div>
+  		</div>
+  		<div class="divider"></div>
+  	</ion-item>
+</ion-list>

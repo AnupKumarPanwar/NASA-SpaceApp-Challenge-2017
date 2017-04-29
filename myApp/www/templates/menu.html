@@ -1,0 +1,72 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content drag-content="true" edge-drag-threshold="true">
+        <ion-nav-bar align-title="center" class="bar-dark">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+
+    <ion-side-menu side="left" class="fc-theme">
+        <ion-header-bar class="bar-dark"></ion-header-bar>
+        <ion-content>
+            <ion-list class="fc-theme-list">
+                <ion-item nav-clear menu-close href="#/app/map" style="border-top:none;">
+                    Map
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/saved">
+                    Saved
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="fieldtrip()">
+                    Field trip guides <span class="badge badge-positive" ng-if="getFieldTripCount()>0" style="background:transparent; color:#005ead;border:#005ead 1px solid;">{{getFieldTripCount()}} &nbsp;<img src="img/stop.png" height="15" width="15"></span>
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/cloudLand">
+                    <b>What is that?</b><br>
+                    Clouds and landscape
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/about">
+                    About
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/faq" style="border-bottom:none;">
+                    FAQ/help
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/tut">
+                    Tutorial
+                </ion-item>
+
+                <ion-item class="item-divider ion-gear-a">
+                </ion-item>
+
+                <div class="item" style="background:white; border-bottom:none; padding-bottom: 0px;">
+                    Trip mode
+                </div>
+                <div class="fc-menu-select" style="background:white;">
+                    <ion-radio ng-model="slider.tripmode" ng-value="'plane'" name="trip"><div class="icon ion-android-plane">&nbsp;</div>flight</ion-radio>
+                    <ion-radio ng-model="slider.tripmode" ng-value="'car'" name="trip">
+                    <div class="icon ion-android-car">&nbsp;</div>car/foot</ion-radio>
+                </div>
+
+                <div class="item" style="background:white; border-bottom:none; padding-bottom: 0px;">
+                    Units
+                </div>
+                <div class="fc-menu-select" style="background:white;">
+                    <ion-radio ng-model="slider.unitmode" ng-value="'metric'" name="unit"  ng-change="unitChange(slider.unitmode)">metric</ion-radio>
+                    <ion-radio ng-model="slider.unitmode" ng-value="'imperial'" name="unit"  ng-change="unitChange(slider.unitmode)">imperial</ion-radio>
+                </div>
+
+                <div class="item item-toggle" style="background:white;">
+                    GPS
+                    <label class="toggle toggle-positive">
+                        <input type="checkbox" ng-model="slider.gps">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,43 @@
+<ion-view view-title="{{getCurrentTitle()}}" class="fc-theme">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="item in getCurrentContent()">
+                <div ng-if="!hasLink(item.wiki)">
+                    <div class="row">
+                        <div class="col" ng-repeat="img in item.imgs">
+                            <img width="auto" height="100%" ng-src="{{img}}">
+                        </div>
+                    </div>
+                    <div class="row item-text-wrap">
+                        <div class="col">
+                            <b>{{item.title}}</b>
+                            <br><p>{{item.text}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="hasLink(item.wiki)">
+                    <a href="#" ng-click="toUrl(item.wiki)" style="color:black;">
+                        <div class="row">
+                            <div class="col" ng-repeat="img in item.imgs">
+                                <img width="100%" height="auto" ng-src="{{img}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <b>{{item.title}}</b>
+                            </div>
+                        </div>
+                        <div class="row item-text-wrap">
+                            <div class="col">
+                                <p>{{item.text}}</p>
+                            </div>
+                            <div style="display:flex;align-items:center;">
+                                <i class="icon ion-chevron-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

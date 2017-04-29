@@ -1,0 +1,30 @@
+<ion-view view-title="Was the feature related to..." class="fc-theme">
+	<ion-content>
+	    <ion-list class="fc-theme-list">
+	      	<ion-item class="fc-list-item">
+	      		<div class="row" ng-repeat="item in getContent()">
+	      			<div class="col col-50" ng-repeat="col in item" align="center">
+			      		<a class="item item-icon-avatar" href="#/app/wthcontent/{{col.id}}" style="padding:0 0; margin-top:5px;">
+			    			<img style="height:auto; width:100%;" ng-src="{{col.img}}"><br>
+	                        <div class="item-text-wrap fc-selectable">
+	                        	<b>{{col.title}}</b>
+	                        </div>
+			  			</a>
+		  			</div>
+	  			</div>
+	      	</ion-item>
+	      	<ion-item class="fc-list-item">
+		      	<div class="row">
+		      		<div class="col">
+		      			<div class="item-text-wrap fc-selectable">
+			      			<img ng-click="openInExternalBrowser()" style="width:100%; height:auto;" src="img/RFA/banner.jpg"><br>
+		      				<a href="#" ng-click="openInExternalBrowser()">Content by Selby Hearth (Bryn Mawr College)</a>
+	      				</div>
+	      			</div>
+	      		</div>
+	      	</ion-item>
+	    </ion-list>
+	</ion-content>
+
+</ion-nav-bar>
+</ion-view>

@@ -1,0 +1,42 @@
+<ion-list class="fc-popup-list">
+    <ion-item class="item-icon-right" ng-repeat="item in getContent()" ng-show="show($index)">
+        <div class="row">
+            <div class="col item-text-wrap fc-selectable title">
+                <strong>
+                    Site: {{item.Site}}
+                </strong>
+                <br>
+                    <div ng-if="item.Program">
+                        <strong>
+                            Program:
+                        </strong>
+                        <span>
+                            {{item.Program}}
+                        </span>
+                        <br/>
+                    </div>
+                    <div ng-if="item['Water Depth']">
+                        <strong>
+                            Water Depth:
+                        </strong>
+                        <span>
+                            {{item['Water Depth']}}(m)
+                        </span>
+                        <br/>
+                    </div>
+                    <div ng-if="item.Abstracts">
+                        <strong>
+                            Abstract:
+                        </strong>
+                        <span>
+                            {{item.Abstracts}}
+                        </span>
+                        <br/>
+                    </div>
+                </br>
+            </div>
+        </div>
+        <div class="divider">
+        </div>
+    </ion-item>
+</ion-list>

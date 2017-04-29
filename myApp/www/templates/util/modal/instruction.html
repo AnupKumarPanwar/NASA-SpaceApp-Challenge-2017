@@ -1,0 +1,55 @@
+<ion-view class="fcol-modal-instruction">
+    <ion-nav-bar class="bar-dark">
+        <ion-nav-buttons side="right">
+          <button class="button button-clear no-animation" ng-click="next()" ng-hide="slideIndex == 6">
+            Next
+          </button>
+          <button class="button button-clear no-animation" ng-show="slideIndex == 6" ng-click="quit()">
+            Finish
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+          <button ng-show="!slideIndex" class="button button-clear no-animation  ng-cloak" ng-click="skip()">
+            Skip intro
+          </button>
+          <button ng-show="slideIndex" class="button button-clear no-animation  ng-cloak" ng-click="previous()">
+            Previous
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true">
+  			<ion-slide class="tut-image tut1">
+          <div>
+            <h3 style="margin-top:44px;">Welcome to</h3>
+            <h1>Flyover Country&trade;</h1>
+            <h3>Take a moment to get oriented.</h3>
+          </div>
+          <div>
+            <img src="img\tut\logo.png" class="tutlogo" />
+          </div>
+  			</ion-slide>
+        <ion-slide class="tut-image tut2">
+        </ion-slide>
+        <ion-slide class="tut-image tut3">
+        </ion-slide>
+        <ion-slide class="tut-image tut4">
+        </ion-slide>
+        <ion-slide class="tut-image tut5">
+        </ion-slide>
+        <ion-slide class="tut-image tut6">
+        </ion-slide>
+        <ion-slide class="tut-image tut7" ng-click="quit()" on-swipe-left="quit()">
+          <img src="img\tut\logo.png" class="tutlogo" />
+          <div class="tuttext">
+            <h3 class="tuttext">tap the map,</h3>
+            <h3 class="tuttext">load your path,</h3>
+            <h3 class="tuttext">save it offline.</h3>
+          </div>
+          <div style="margin:75px;">
+            <button class="button button-positive" ng-click="quit()">
+              Got it!
+            </button>
+          </div>
+        </ion-slide>
+	    </ion-slide-box>
+</ion-view>

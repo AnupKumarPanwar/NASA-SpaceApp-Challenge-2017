@@ -1,0 +1,21 @@
+<ion-view view-title="FAQ/help" hide-back-button="true" class="fc-theme">
+  	<ion-content>
+	  	<ion-list>
+		  	<div ng-repeat="item in getFAQs()">
+	          	<ion-item ng-click="setCollapsed(item)" class="item-icon-left">
+	          		<div class="row">
+	          			<div class="item-text-wrap fc-selectable">
+	          				<i class="icon ion-ios-help-outline" style="color:#005ead;"></i>
+				    		{{getQuestion(item)}}
+				  		</div>
+	          		</div>
+	          		<div class="row">
+					  	<div class="item-text-wrap fc-selectable" ng-show="getCollapsed(item)" style="padding:10px;">
+	                    	<div ng-bind-html="getAnswer(item)"></div>
+	                	</div>
+                	</div>
+	          	</ion-item>
+	        </div>
+	    </ion-list>
+  	</ion-content>
+</ion-view>

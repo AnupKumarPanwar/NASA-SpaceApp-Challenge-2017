@@ -1,0 +1,21 @@
+<ion-list class="fc-popup-list">
+  	<ion-item class="item-icon-right" ng-repeat="item in getContent()" ng-show="show($index)" ng-click="toUrl(item.WikiDataTitle)">
+  		<div class="row">
+  			<div class="col col-80px">
+				<div><img ng-src="{{item.ImgSrc}}"></div>
+			</div>
+			<div class="col">
+				<div class="row">
+					<div class="col col-90 item-text-wrap fc-selectable">
+						<div class="title"><strong>{{item.TaxonName}}</strong><br></div>
+						<div><span>{{formatNumber(item.eag)}}-{{formatNumber(item.lag)}} Million years before present</span></div>
+					</div>
+		          	<div class="col col-10">
+		              	<i class="icon ion-chevron-right icon-accessory"></i>
+		          	</div>
+				</div>
+			</div>
+  		</div>
+		<div class="divider"></div>
+  	</ion-item>
+</ion-list>

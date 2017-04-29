@@ -9,6 +9,9 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <allow-navigation href="*" />
+  <allow-intent href="http://*/*" launch-external="yes"/>
+  <allow-intent href="https://*/*" launch-external="yes"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
