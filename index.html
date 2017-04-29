@@ -1,6 +1,8 @@
+<head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
 
-
-<iframe id='flight3d' src="https://www.flightradar24.com/FDX1468/d38fd53/3d" style="height: 117vh; width: 124vw; position: fixed;left: -20vw;top: -12vh;"></iframe>
+<iframe id='flight3d' src="https://www.flightradar24.com/FDX1468/d38fd53/3d" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
 <!-- <div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
 <div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
 <div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
@@ -9,10 +11,63 @@
       <button onclick="process();">Submit</button>
 </div> -->
 
-<div >
-      <!-- <input type="text" name="flightNo" id="flightNo">
-      <button onclick="process();">Submit</button> -->
+<div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
+      <input type="text" name="flightNo" id="flightNo" class="form-control">
+      <button type="button" class="btn btn-success" onclick="process(); move();">Search</button>
 </div>
+
+<!-- <div class="progress" style="position: fixed;z-index: 1000;text-align: center; bottom: -2vh;left: 0vw; width: 100vw">
+        <div id="prograssPercent" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">40% Complete (success)</span></div>
+</div> -->
+
+<style>
+#myProgress, #myP {
+  width: 100%;
+  background-color: #ddd;
+  position: fixed;
+  z-index: 1000;
+  left: 0px;
+  bottom: 0px;
+  width: 100vw;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+</style>
+<body>
+
+<!-- <h1>JavaScript Progress Bar</h1> -->
+
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+<!-- <br> -->
+<!-- <button id="myP" onclick="move()">Click Me</button>  -->
+
+<script>
+function move() {
+
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 30);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+      $('#myProgress').hide();
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+      $('#myProgress').show();
+    }
+  }
+}
+</script>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -20,7 +75,10 @@
       var allFilghts;
       function change(i, j)
       {
+            // move();
             $('#flight3d').attr('src', 'https://www.flightradar24.com/'+j+'/'+i+'/3d');
+                  // document.getElementById("prograssPercent").style.width = x+"vw";
+            // }
       }
 
       function process()
