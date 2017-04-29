@@ -1,27 +1,56 @@
 
 
-<iframe id='flight3d' src="https://www.flightradar24.com/IGO3473/d391b81/3d" style="height: 100vh; width: 100vw"></iframe>
-<div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
+<iframe id='flight3d' src="https://www.flightradar24.com/FDX1468/d38fd53/3d" style="height: 117vh; width: 124vw; position: fixed;left: -20vw;top: -12vh;"></iframe>
+<!-- <div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
 <div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
 <div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
-<div style="background: white; width: 100vw; height: 12vh; position: fixed; bottom: 0px; left: 0px"></div>
+<div style="background: white; width: 100vw; height: 12vh; position: fixed; bottom: 0px; left: 0px">
+      <input type="text" name="flightNo" id="flightNo">
+      <button onclick="process();">Submit</button>
+</div> -->
 
-<div ></div>
+<div >
+      <!-- <input type="text" name="flightNo" id="flightNo">
+      <button onclick="process();">Submit</button> -->
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
+      var allFilghts;
       function change(i, j)
       {
             $('#flight3d').attr('src', 'https://www.flightradar24.com/'+j+'/'+i+'/3d');
       }
+
+      function process()
+      {
+            var no=$('#flightNo').val();
+            $.get('http://192.172.6.179:8080/'+no, function(data)
+            {
+                   $('#flight3d').attr('src', data);
+            })
+            // for (i in allFilghts)
+            // {
+            //       console.log(i);
+            //       console.log(allFilghts[i][13]);
+            //       if (i!='full_count' && i!='version' && allFilghts[i][13]==no) 
+            //       {
+            //             change(i, allFilghts[i][16]);
+
+            //       }
+            // }
+      }
 </script>
 
 <script>
-      $.get('https://data-live.flightradar24.com/zones/fcgi/feed.js', function (data) {
-            for (var i in data) {
-                  if (i!='full_count' && i!='version') 
-                        {$('#flights').append('<font onclick="change(\''+i+'\',\''+data[i][16]+'\')">'+i+'</font>&emsp;')}
-            }
-      })
+      // $.get('https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=71.60,-76.63,-152.55,106.52&faa=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=7200&gliders=1&stats=1&selected=d395490&ems=1&enc=XZ0mxLiJzQ7p8PTURjqQGuL-tDxNe8DlDwQdlWhbT-A', function (data) {
+      //      allFilghts=data; 
+      //      alert('done');
+      //      // full_count
+      //       // for (var i in data) {
+      //       //       if (i!='full_count' && i!='version') 
+      //       //             {$('#flights').append('<font onclick="change(\''+i+'\',\''+data[i][16]+'\')">'+i+'</font>&emsp;')}
+      //       // }
+      // })
 </script>
