@@ -14,7 +14,7 @@
       <button onclick="process();">Submit</button>
 </div> -->
 
-<b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 10vh; left: 40vw; color: white"></b>
+<b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 17vh; left: 43vw; color: white"></b>
 
 <!-- <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
       <input type="text" name="flightNo" id="flightNo" class="form-control">
@@ -41,7 +41,7 @@
   width: 100%;
   background-color: #ddd;
   position: fixed;
-  z-index: 1000;
+  z-index: 3000;
   left: 0px;
   bottom: 0px;
   width: 100vw;
@@ -89,6 +89,10 @@ function move() {
 
 
 <script>
+	$(document).ready(function(){
+            		$('#localImg').hide();
+
+	});
       var allFilghts;
       var no;
       function change(i, j)
@@ -146,11 +150,21 @@ function getLocName()
             // alert(results[1].formatted_address);
             $('#currentLoc').text(results[1].formatted_address);
 
+            	$.get('http://192.172.6.179:8080/flickr/'+results[1].formatted_address, function(data)
+            	{
+            		$('#localImg').html('');
+            		console.log(data);
+            		for (var i = 0; i < 10; i++) {
+            			$('#localImg').append('<img src="'+data.photos[i]+'">');
+            		}
+            		$('#localImg').show();
+            	})
+
           } else {
-            window.alert('No results found');
+            // window.alert('No results found');
           }
         } else {
-          window.alert('Geocoder failed due to: ' + status);
+          // window.alert('Geocoder failed due to: ' + status);
         }
       });
 
@@ -189,3 +203,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ6DdP4kmkwpGoyRF2MSXyU7K
 		$('#gira').animate({right:"10px"}, 20);
 	})
 </script> -->
+
+<div style="display: flex;justify-content: center;bottom: 0vh;height: auto;position: fixed;z-index: 2000;background: rgba(0, 0, 0, 0.3);width: 100%;"  id="localImg">
+</div>
