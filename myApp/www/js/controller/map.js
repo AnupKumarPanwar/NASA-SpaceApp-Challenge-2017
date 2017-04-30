@@ -1415,21 +1415,11 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
 
     $scope.startCurr=function(fltNo)
     {
-        // alert(fltNo);
 
-       // startApp.set({ /* params */
-       //  "action": "ACTION_SEND",
-       //  "package": "com.instagram.android",
-       //  "type": "text/plain"
-       // }, {
-       //  "android.intent.extra.TEXT":"Text..."
-       // }).start();
-
-
-       $http.get('http://192.168.43.118:8080/coord/'+fltNo)
+        $rootScope.fltNo=fltNo;
+       $http.get('http://192.172.6.179:8080/coord/'+fltNo)
        .then (function(data)
        {
-           // alert('done');
            var dd=data.data;
            console.log(dd.coords[0]);
            console.log(dd.coords[dd.coords.length-1]);

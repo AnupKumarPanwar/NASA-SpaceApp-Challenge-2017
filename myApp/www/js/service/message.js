@@ -3,7 +3,7 @@ app.factory('Message', function() {
     service.MODAL= {
         CONFIRM: {
             EXITAPP: {
-                TITLE: "Exit Flyover Country?",
+                TITLE: "Exit Pilot Plus?",
                 MESSAGE: "Use your phone's home button instead of the back button if you want to keep your path loaded and location tracking on."
             },
             DELETEALL: {

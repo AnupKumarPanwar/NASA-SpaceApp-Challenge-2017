@@ -77,7 +77,7 @@ app.run(function(DB, Modal, $location, $ionicPlatform, $rootScope, $window, GPS,
             $window.backgroundGeolocation.configure(callbackFn, failureFn, {
                 debug: false,
                 stopOnTerminate: true,
-                notificationTitle: "Flyover Country navigation mode enabled",
+                notificationTitle: "Pilot Plus navigation mode enabled",
                 notificationText: "Maintaining GPS signal",
                 notificationIconColor: "#005EAD",
                 locationTimeout: 1,

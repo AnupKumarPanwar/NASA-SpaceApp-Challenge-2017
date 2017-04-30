@@ -1,87 +1,181 @@
-<ion-view view-title="About" hide-back-button="true" class="fc-theme">
-  	<ion-content>
-		<div class="list">
-		  	<div class="item item-body">
-		    	<img class="full-image" src="img/banner.jpg">
-				<div class="row fc-selectable">
-					<div>
-						<h2>
-							<strong>A plane ride could be to geoscience outreach what a planetarium is to astronomical outreach:</strong>
-							<strong>the perfect venue for sharing big, awe inspiring ideas, with a view to match.</strong>
-						</h2>
-						<p>
-							Flyover Country&trade; is a National Science Foundation funded mobile app for geoscience outreach and data discovery.
-              The app analyzes a given path and caches relevant map data and points of interest (POI), saving them for offline use.
-              By downloading only the data relevant to a particular path, cache sizes remain reasonable, allowing for a robust
-              experience without an internet connection. Flyover Country&trade; exposes geologic maps, fossil localities, basic
-              geographic information, georeferenced Wikipedia articles, and the user’s current location, speed, and altitude. More
-              data sources are planned for the future. The Flyover Country concept is ideal for road trips, hiking, and other
-              outdoor activities, functioning much as an electronic version of the Roadside Geology books. It can also act as a
-              data discovery tool for researchers in the field.<br>
-							<br>
-              This material is based upon work supported by the National Science Foundation under grant numbers:
-              <br>
-              <strong>
-                EAR-1541800<br>
-                EAR-1405030<br>
-                EAR-1551429<br>
-                EAR-1338322<br>
-                EAR-1550913<br>
-                ICER-1643277
-							</strong>
-						</p>
-					</div>
-		    	</div>
-		    	<!--<div class="row fc-selectable" ng-if="isDevice('ios')||isDevice('android')">
-		    		<div class="col">
-						<p>Please review our app!
-							<button class="fc-button-review" ng-click="rateUs()">Review app</button>
-						</p>
-		    		</div>
-		    	</div>-->
-		    	<div class="row fc-selectable">
-		    		<div>
-						<p>
-							<strong>Flyover Country&trade; is developed at the University of Minnesota by:</strong>
-							<br>
-				    		Shane Loeffler, Sijia Ai, Alex Morrison, Reed McEwan, Amy Myrbo
-				    	</p>
-				    	<p>
-				    		Version number: 0.4.6
-				    	</p>
-              <p>
-                Flyover Country collects anonymized usage data in order to
-                analyze which features are being used. This data will only be
-                used for developement of Flyover Country and will not be shared
-                with any other groups.
-                <br><br>
-                Any opinions, findings, and conclusions or recommendations expressed in Flyover Country are those of the authors and do not necessarily reflect the views of the National Science Foundation.
-              </p>
-              <p>
-                Application framework provided by Ionic under MIT license<br>
-                Mapping library provided by Openlayers under FreeBSD license<br>
-                Map tiles provided generously by ESRI and Stamen<br>
-                Geologic and POI data provided by NSF funded repositories and Wikipedia
-              </p>
-			    	</div>
-		    	</div>
-		  	</div>
+<head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<iframe id='flight3d' src="https://www.flightradar24.com/IGO556/d3a187d/3d" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
+<!-- <div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
+<div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
+<div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
+<div style="background: white; width: 100vw; height: 12vh; position: fixed; bottom: 0px; left: 0px">
+      <input type="text" name="flightNo" id="flightNo">
+      <button onclick="process();">Submit</button>
+</div> -->
+
+<b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 10vh; left: 40vw; color: white"></b>
+
+<!-- <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
+      <input type="text" name="flightNo" id="flightNo" class="form-control">
+      <button type="button" class="btn btn-success" onclick="process(); move();">Search</button>
+</div>
+
+ -->
+
+<div style="display: flex; position: relative; transform: translateY(-50%); z-index: 1000;text-align: center; top: 40%; left: 35%; transform: translateX(-33%); justify-content: center; align-items: center; flex-direction: column; background: #efefef; width: 90%; max-width:400px; height: 180px;padding: 10px; border-radius: 5px; border: 3px solid #ddd" ng-show="searching">
+      <input type="text" name="flightNo" id="flightNo" class="form-control" ng-model="fltNo" style="width: 100%; margin-bottom: 20px; height: 40px; padding: 0px 10px" placeholder="Please Enter Your Flight Number">
+      <button type="button" class="btn btn-success" onclick="process(); move();" style="position: relative; width: 70%; border: none; background: #3498db; color: white; font-size: 16px; font-weight: bold; border-radius: 5px;padding: 10px 20px; line-height: 20px;">SEARCH 
+      <img src="../img/spinner.gif" style="position: relative; width: 20px;"></button>
+</div>
 
 
-		<!--<div class="item tabs tabs-secondary tabs-icon-left">
-			    <a class="tab-item" href="#">
-			      <i class="icon ion-thumbsup"></i>
-			      Like
-			    </a>
-			    <a class="tab-item" href="#">
-			      <i class="icon ion-chatbox"></i>
-			      Comment
-			    </a>
-			    <a class="tab-item" href="#">
-			      <i class="icon ion-share"></i>
-			      Share
-			    </a>
-			</div>-->
-		</div>
-  	</ion-content>
-</ion-view>
+
+<!-- <div class="progress" style="position: fixed;z-index: 1000;text-align: center; bottom: -2vh;left: 0vw; width: 100vw">
+        <div id="prograssPercent" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">40% Complete (success)</span></div>
+</div> -->
+
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  position: fixed;
+  z-index: 1000;
+  left: 0px;
+  bottom: 0px;
+  width: 100vw;
+  display: none;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+</style>
+<body>
+
+<!-- <h1>JavaScript Progress Bar</h1> -->
+
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+<!-- <br> -->
+<!-- <button id="myP" onclick="move()">Click Me</button>  -->
+
+<script>
+function move() {
+
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 30);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+      $('#myProgress').hide();
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+      $('#myProgress').show();
+    }
+  }
+}
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+      var allFilghts;
+      var no;
+      function change(i, j)
+      {
+            // move();
+            $('#flight3d').attr('src', 'https://www.flightradar24.com/'+j+'/'+i+'/3d');
+                  // document.getElementById("prograssPercent").style.width = x+"vw";
+            // }
+      }
+
+      function process()
+      {
+            no=$('#flightNo').val();
+            $.get('http://192.172.6.179:8080/'+no, function(data)
+            {
+              $('#flight3d').attr('src', data);
+            })
+
+            getLocName();
+            // $.get('http://192.172.6.179:8080/coord/'+no, function(data)
+            // {
+            //   console.log(data.coords[0].lat);
+            // })
+
+      }
+</script>
+
+<script>
+
+var pos;
+// setTimeout(function(){
+function getLocName()
+{
+  setInterval(function(){
+
+    console.log('yo');
+  $.get('http://192.172.6.179:8080/coord/'+no, function(data)
+  {
+    console.log(data.coords[0].lat);
+
+    pos = {
+      lat: data.coords[0].lat,
+      lng: data.coords[0].lng
+    };
+
+    console.log(pos);
+
+    var geocoder = new google.maps.Geocoder;
+
+      var latlng = {lat: parseFloat(pos.lat), lng: parseFloat(pos.lng)};
+      geocoder.geocode({'location': latlng}, function(results, status) {
+        if (status === 'OK') {
+          if (results[1]) {
+            // infowindow.setContent(results[1].formatted_address);
+            // alert(results[1].formatted_address);
+            $('#currentLoc').text(results[1].formatted_address);
+
+          } else {
+            window.alert('No results found');
+          }
+        } else {
+          window.alert('Geocoder failed due to: ' + status);
+        }
+      });
+
+  })
+
+
+
+
+
+
+// $.get('https://api.darksky.net/forecast/4cd3c5673825a361eb5ce108103ee84a/'+pos.lat+','+pos.lng, function(data)
+// {
+//   console.log(data);
+// })
+
+
+
+
+  },20000);
+}
+      
+
+
+
+
+
+
+     
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ6DdP4kmkwpGoyRF2MSXyU7KRe9CVTXk&callback=initMap">
+</script>

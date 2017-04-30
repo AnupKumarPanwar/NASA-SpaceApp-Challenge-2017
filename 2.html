@@ -2,7 +2,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
-<iframe id='flight3d' src="" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
+<iframe id='flight3d' src="https://www.flightradar24.com/IGO556/d3a187d/3d" style="height: 120vh; width: 124vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
 <!-- <div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
 <div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
 <div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
@@ -13,20 +13,10 @@
 
 <b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 10vh; left: 40vw; color: white"></b>
 
-<!-- <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
+<div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
       <input type="text" name="flightNo" id="flightNo" class="form-control">
       <button type="button" class="btn btn-success" onclick="process(); move();">Search</button>
 </div>
-
- -->
-
-<div style="display: flex; position: relative; transform: translateY(-50%); z-index: 1000;text-align: center; top: 40%; left: 35%; transform: translateX(-33%); justify-content: center; align-items: center; flex-direction: column; background: #efefef; width: 90%; max-width:400px; height: 180px;padding: 10px; border-radius: 5px; border: 3px solid #ddd" id="searchContainer">
-      <input type="text" name="flightNo" id="flightNo" class="form-control" ng-model="fltNo" style="width: 100%; margin-bottom: 20px; height: 40px; padding: 0px 10px" placeholder="Please Enter Your Flight Number">
-      <button type="button" class="btn btn-success" onclick="process(); move();" style="position: relative; width: 70%; border: none; background: #3498db; color: white; font-size: 16px; font-weight: bold; border-radius: 5px;padding: 10px 20px; line-height: 20px;">SEARCH 
-      <img src="./img/spinner.gif" style="position: relative; width: 20px;"></button>
-</div>
-
-
 
 <!-- <div class="progress" style="position: fixed;z-index: 1000;text-align: center; bottom: -2vh;left: 0vw; width: 100vw">
         <div id="prograssPercent" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">40% Complete (success)</span></div>
@@ -71,7 +61,6 @@ function move() {
     if (width >= 100) {
       clearInterval(id);
       $('#myProgress').hide();
-      $('#searchContainer').hide();
     } else {
       width++; 
       elem.style.width = width + '%'; 
