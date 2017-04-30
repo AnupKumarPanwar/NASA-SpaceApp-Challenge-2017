@@ -1,8 +1,18 @@
+
+
+
+
+
+
+
 <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
-<iframe id='flight3d' src="https://www.flightradar24.com/IGO556/d3a187d/3d" style="height: 125vh; width: 127vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
+<iframe id='flight3d' src="" style="height: 125vh; width: 127vw; position: fixed;left: -20vw;top: -13vh;"></iframe>
 <!-- <div id="flights" style="background: white; width: 20vw; height: 100vh; position: fixed; top: 0px; left: 0px"></div>
 <div style="background: white; width: 4vw; height: 100vh; position: fixed; top: 0px; right: 0px"></div>
 <div style="background: white; width: 100vw; height: 17vh; position: fixed; top: 0px; left: 0px"></div>
@@ -11,7 +21,7 @@
       <button onclick="process();">Submit</button>
 </div> -->
 
-<b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 10vh; left: 40vw; color: white"></b>
+<b id="currentLoc" style="position: fixed; z-index: 1000; bottom: 17vh; left: 43vw; color: white"></b>
 
 <!-- <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw;">
       <input type="text" name="flightNo" id="flightNo" class="form-control">
@@ -20,11 +30,12 @@
 
  -->
 
-<div style="display: flex; position: relative; transform: translateY(-50%); z-index: 1000;text-align: center; top: 40%; left: 35%; transform: translateX(-33%); justify-content: center; align-items: center; flex-direction: column; background: #efefef; width: 90%; max-width:400px; height: 180px;padding: 10px; border-radius: 5px; border: 3px solid #ddd" ng-show="searching">
+<div style="display: flex; position: relative; transform: translateY(-50%); z-index: 1000;text-align: center; top: 40%; left: 35%; transform: translateX(-33%); justify-content: center; align-items: center; flex-direction: column; background: #efefef; width: 90%; max-width:400px; height: 180px;padding: 10px; border-radius: 5px; border: 3px solid #ddd" id="searchContainer">
       <input type="text" name="flightNo" id="flightNo" class="form-control" ng-model="fltNo" style="width: 100%; margin-bottom: 20px; height: 40px; padding: 0px 10px" placeholder="Please Enter Your Flight Number">
       <button type="button" class="btn btn-success" onclick="process(); move();" style="position: relative; width: 70%; border: none; background: #3498db; color: white; font-size: 16px; font-weight: bold; border-radius: 5px;padding: 10px 20px; line-height: 20px;">SEARCH 
-      <img src="../img/spinner.gif" style="position: relative; width: 20px;"></button>
+      <img src="./img/spinner.gif" style="position: relative; width: 20px;"></button>
 </div>
+
 
 
 
@@ -37,7 +48,7 @@
   width: 100%;
   background-color: #ddd;
   position: fixed;
-  z-index: 1000;
+  z-index: 3000;
   left: 0px;
   bottom: 0px;
   width: 100vw;
@@ -71,6 +82,7 @@ function move() {
     if (width >= 100) {
       clearInterval(id);
       $('#myProgress').hide();
+      $('#searchContainer').hide();
     } else {
       width++; 
       elem.style.width = width + '%'; 
@@ -82,9 +94,12 @@ function move() {
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
+  $(document).ready(function(){
+                $('#localImg').hide();
+
+  });
       var allFilghts;
       var no;
       function change(i, j)
@@ -142,11 +157,21 @@ function getLocName()
             // alert(results[1].formatted_address);
             $('#currentLoc').text(results[1].formatted_address);
 
+              $.get('http://192.172.6.179:8080/flickr/'+results[1].formatted_address, function(data)
+              {
+                $('#localImg').html('');
+                console.log(data);
+                for (var i = 0; i < 10; i++) {
+                  $('#localImg').append('<img src="'+data.photos[i]+'">');
+                }
+                $('#localImg').show();
+              })
+
           } else {
-            window.alert('No results found');
+            // window.alert('No results found');
           }
         } else {
-          window.alert('Geocoder failed due to: ' + status);
+          // window.alert('Geocoder failed due to: ' + status);
         }
       });
 
@@ -179,3 +204,12 @@ function getLocName()
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ6DdP4kmkwpGoyRF2MSXyU7KRe9CVTXk&callback=initMap">
 </script>
+
+<!-- <script>
+  $(document).ready(function(){
+    $('#gira').animate({right:"10px"}, 20);
+  })
+</script> -->
+
+<div style="display: flex;justify-content: center;bottom: 0vh;height: auto;position: fixed;z-index: 2000;background: rgba(0, 0, 0, 0.3);width: 100%;"  id="localImg">
+</div>
