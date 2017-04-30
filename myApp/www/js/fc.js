@@ -10,6 +10,9 @@ app.run(function(DB, Modal, $location, $ionicPlatform, $rootScope, $window, GPS,
             State.setGPSAccess(accessgps);
         });*/
 
+
+        
+
         $rootScope.$watch(function(){
             return State.getGPSAccess();
         },function(){

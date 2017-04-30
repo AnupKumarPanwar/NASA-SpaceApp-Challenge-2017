@@ -1,6 +1,7 @@
 app.factory('TileService', ['State', 'DB', function(State, DB) {
     var service = {};
-    var currentTile = "osm";
+    var currentTile = "sat";
+    // var currentTile = "osm";
     var tileNames = ['toner','osm','sat' /*,'terrain'*/];
     var tileDownloadNames = ['toner','osm','sat'/*,'terrain'*/];
     var preloadLevel=[2,3,4];

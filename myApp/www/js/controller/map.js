@@ -1543,6 +1543,7 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
     };
     $ionicGesture.on("tap", function(event) {
         var pixel = [event.gesture.center.pageX, event.gesture.center.pageY];
+        // drawPath("311239.61, 5818103.50");
         var coordinate = map.getCoordinateFromPixel(pixel);
         if (State.isMap(0) || State.isMap(1)) {
             if (map.hasFeatureAtPixel(pixel)) {
