@@ -1,4 +1,4 @@
-app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, $ionicHistory, $ionicGesture, $ionicSideMenuDelegate, $state, $q, Popover, $timeout, Config, OL, GPS, State, Util, TileService, Modal, IonicUtilService, RequestService, DataService, DB, Message) {
+app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, $ionicHistory, $ionicGesture, $ionicSideMenuDelegate, $state, $q, Popover, $timeout, Config, OL, GPS, State, Util, TileService, Modal, IonicUtilService, RequestService, DataService, DB, Message, $http) {
     var map = undefined;
     var MapFeatureCollection = function() {
         this.collection = {};
@@ -1400,6 +1400,28 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
             }
         }
     }, mapElement);
+
+    var counter=0;
+    var loc1;
+    var loc2;
+
+    $scope.startCurr=function(fltNo)
+    {
+        alert(fltNo);
+       $http.get('http://192.168.43.118:8080/coord/'+fltNo)
+       .then (function(data)
+       {
+           // alert('done');
+           var dd=data.data;
+           console.log(dd.coords[0]);
+           console.log(dd.coords[dd.coords.length-1]);
+         loc1=[dd.coords[0].lng, dd.coords[0].lat];  
+         loc2=[dd.coords[dd.coords.length-1].lng, dd.coords[dd.coords.length-1].lat];  
+       }); 
+    }
+
+   
+
     var drawPath = function(coordinate) {
         var latestcoords = ol.proj.transform(coordinate, Config.mapProjection, Config.CRS);
         if (latestcoords[1] > 85) {
@@ -1407,6 +1429,21 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
         } else if (latestcoords[1] < -85) {
             latestcoords[1] = -85;
         }
+
+
+        if (counter==0) {
+            // latestcoords=[76.64062499999997, 30.24957724046766];
+            latestcoords=loc2;
+            counter++;
+        }
+        else
+        {
+            // latestcoords=[33.9249, 18.4241];
+            latestcoords=loc1;
+        }
+
+        // console.log(latestcoords);
+
         var factor = Math.floor((latestcoords[0] + 180) / 360);
         latestcoords[0] -= factor * 360;
         if (!mapRunProcess.flightPath.startPoint.getGeometry()) {
@@ -1537,11 +1574,14 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
             mapRunProcess.flightPath.path.getGeometry().appendCoordinate(latestcoords);
         }
     };
+
+
     var createPath = function(polygonarray) {
         //console.log("path is set")
         mapRunProcess.flightPath.setArcPathBuffer(polygonarray);
     };
     $ionicGesture.on("tap", function(event) {
+
         var pixel = [event.gesture.center.pageX, event.gesture.center.pageY];
         // drawPath("311239.61, 5818103.50");
         var coordinate = map.getCoordinateFromPixel(pixel);

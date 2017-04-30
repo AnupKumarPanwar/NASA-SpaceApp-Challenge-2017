@@ -9,6 +9,14 @@
 		<!-- download -->
 		<fc-button class="fc-barbutton" no-state state-triggered state="2" name="download" text="Save for offline"></fc-button>
     </ion-nav-buttons>
+
+
+    <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw; top: 10vh;">
+          <input type="text" name="flightNo" id="flightNo" class="form-control" ng-model="fltNo">
+          <button type="button" class="btn btn-success" ng-click="startCurr(fltNo)">Search</button>
+    </div>
+
+
 		<!-- <div ng-controller="TutorialCtrl" class="tut-image tut1"></div> -->
 	<ion-pane class="fc-theme">
 		<div id="map" data-tap-disabled="true"></div>
