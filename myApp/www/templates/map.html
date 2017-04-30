@@ -11,11 +11,11 @@
     </ion-nav-buttons>
 
 
-    <div style="position: fixed;z-index: 1000;text-align: center;left: 47vw; top: 10vh;">
-          <input type="text" name="flightNo" id="flightNo" class="form-control" ng-model="fltNo">
-          <button type="button" class="btn btn-success" ng-click="startCurr(fltNo)">Search</button>
+    <div style="display: flex; position: relative; transform: translateY(-50%); z-index: 1000;text-align: center; top: 40%; left: 35%; transform: translateX(-33%); justify-content: center; align-items: center; flex-direction: column; background: #efefef; width: 90%; max-width:400px; height: 180px;padding: 10px; border-radius: 5px; border: 3px solid #ddd">
+          <input type="text" name="flightNo" id="flightNo" class="form-control" ng-model="fltNo" style="width: 100%; margin-bottom: 20px; height: 40px; padding: 0px 10px" placeholder="Please Enter Your Flight Number">
+          <button type="button" class="btn btn-success" ng-click="startCurr(fltNo)" style="position: relative; width: 70%; border: none; background: #3498db; color: white; font-size: 16px; font-weight: bold; border-radius: 5px;padding: 10px 20px; line-height: 20px;">SEARCH 
+          <img src="../img/spinner.gif" style="position: relative; width: 20px;"></button>
     </div>
-
 
 		<!-- <div ng-controller="TutorialCtrl" class="tut-image tut1"></div> -->
 	<ion-pane class="fc-theme">
