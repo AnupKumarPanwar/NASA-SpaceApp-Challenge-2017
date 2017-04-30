@@ -22,4 +22,5 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <plugin name="StartApp" value="com.phonegap.plugins.startapp.StartApp"/>
 </widget>

@@ -1,4 +1,10 @@
 app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, $ionicHistory, $ionicGesture, $ionicSideMenuDelegate, $state, $q, Popover, $timeout, Config, OL, GPS, State, Util, TileService, Modal, IonicUtilService, RequestService, DataService, DB, Message, $http) {
+    
+
+
+ 
+
+
     var map = undefined;
     var MapFeatureCollection = function() {
         this.collection = {};
@@ -1405,9 +1411,21 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
     var loc1;
     var loc2;
 
+    $scope.searching=true;
+
     $scope.startCurr=function(fltNo)
     {
-        alert(fltNo);
+        // alert(fltNo);
+
+       // startApp.set({ /* params */
+       //  "action": "ACTION_SEND",
+       //  "package": "com.instagram.android",
+       //  "type": "text/plain"
+       // }, {
+       //  "android.intent.extra.TEXT":"Text..."
+       // }).start();
+
+
        $http.get('http://192.168.43.118:8080/coord/'+fltNo)
        .then (function(data)
        {
@@ -1416,7 +1434,9 @@ app.controller('MapCtrl', function($scope, $ionicPlatform, $window, $rootScope, 
            console.log(dd.coords[0]);
            console.log(dd.coords[dd.coords.length-1]);
          loc1=[dd.coords[0].lng, dd.coords[0].lat];  
-         loc2=[dd.coords[dd.coords.length-1].lng, dd.coords[dd.coords.length-1].lat];  
+         loc2=[dd.coords[dd.coords.length-1].lng, dd.coords[dd.coords.length-1].lat];
+        $scope.searching=false;
+
        }); 
     }
 
